@@ -1,5 +1,5 @@
 output "vpc" {
-  description = "AWS VPC ID for the created VPC"
+  description = "Azure VPC ID for the created VPC"
   value       = ""
 }
 
