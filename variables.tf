@@ -10,6 +10,10 @@ variable "region" {
   default = "westus"
 }
 
+variable "environment" {
+  default = "demo"
+}
+
 variable "azs" {
   default = ["us-east-2a", "us-east-2b"]
 }
