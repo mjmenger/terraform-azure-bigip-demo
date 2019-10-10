@@ -13,11 +13,6 @@ output "bigip_mgmt_port" {
   value       = ""
 }
 
-output "bigip_password" {
-  description = "BIG-IP management password"
-  value       = ""
-}
-
 output "nginx_ips" {
   description = "Internal IP addresses of the demo app servers"
   value       = ""
