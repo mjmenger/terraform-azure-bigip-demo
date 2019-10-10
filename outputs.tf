@@ -1,6 +1,6 @@
 output "vpc" {
   description = "Azure VPC ID for the created VPC"
-  value       = ""
+  value       = module.network.vnet_id
 }
 
 output "bigip_mgmt_public_ips" {
