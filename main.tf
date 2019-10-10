@@ -1,12 +1,31 @@
-provider "azurerm" {
-
+resource "random_id" "id" {
+    byte_length = 2
 }
 
-module bigip {
-    source              = "github.com/mjmenger/terraform-azure-bigip"
+module "network" {
+    source              = "Azure/network/azurerm"
+    version             = "2.0.0"
+    vnet_name           = format("%s-vpc-%s", var.prefix, random_id.id.hex)
+    resource_group_name = "myapp"
+    location            = var.region
+    address_space       = var.cidr
+    subnet_prefixes     = concat(
+        [for num in range(length(var.azs)): cidrsubnet(var.cidr, 8, num)],
+        [for num in range(length(var.azs)): cidrsubnet(var.cidr, 8, num + 10)],
+    )
+    subnet_names        = concat(
+        [for num in range(length(var.azs)): format("%s-privatesubnet-%s",var.prefix,num)],
+        [for num in range(length(var.azs)): format("%s-publicsubnet-%s",var.prefix,num + 10)]
+    )
 
-    prefix              = "bigip"
-    f5_instance_count   = 1   
-    #mgmt_subnet_security_group_ids = [sg-01234567890abcdef]
-    #vpc_mgmt_subnet_ids = [subnet-01234567890abcdef]
+
+    tags                = {
+                            environment = "demo"
+                            costcenter  = "sales"
+                            terraform    = "true"
+                          }
 }
+
+
+
+
