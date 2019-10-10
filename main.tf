@@ -5,8 +5,8 @@ resource "random_id" "id" {
 module "network" {
     source              = "Azure/network/azurerm"
     version             = "2.0.0"
-    vnet_name           = format("%s-vpc-%s", var.prefix, random_id.id.hex)
-    resource_group_name = "myapp"
+    vnet_name           = format("%s-vnet-%s", var.prefix, random_id.id.hex)
+    resource_group_name = format("%s-resourcegroup-%s", var.prefix, random_id.id.hex)
     location            = var.region
     address_space       = var.cidr
     subnet_prefixes     = concat(
