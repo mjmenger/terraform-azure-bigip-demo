@@ -23,10 +23,13 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+**Running from Desktop (please complete the following information):**
+ - OS: [e.g. Window 10]
+ - Terraform version [run ```terraform --version```]
 
+**Running from a container (please complete the following information):**
+ - Container name and tags: [e.g. ubuntu:18.04]
+ - Terraform version [run ```terraform --version``` within the container]
+ 
 **Additional context**
 Add any other context about the problem here.
